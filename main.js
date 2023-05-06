@@ -5,16 +5,16 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 let object;
 let controls
-let objToRender = 'TR1';
 
-const loader = new GLTFLoader();
+//Set which object to render
+let objToRender = 'eye';
 
 //Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
 
 //Load the file
 loader.load(
-  `model/${objToRender}/scene.gltf`,
+  `models/${objToRender}/scene.gltf`,
   function (gltf) {
     //If the file is loaded, add it to the scene
     object = gltf.scene;
@@ -60,7 +60,7 @@ function animate() {
   //Here we could add some code to update the scene, adding some automatic movement
 
   //Make the eye move
-  if (object && objToRender === "TR1") {
+  if (object && objToRender === "eye") {
     //I've played with the constants here until it looked good 
     object.rotation.y = -3 + mouseX / window.innerWidth * 3;
     object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
