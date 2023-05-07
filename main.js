@@ -46,14 +46,6 @@ topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "dino" ? 5 : 1);
-scene.add(ambientLight);
-
-//This adds controls to the camera, so we can rotate / zoom it with the mouse
-if (objToRender === "eye") {
-  controls = new OrbitControls(camera, renderer.domElement);
-}
-
 //Render the scene
 function animate() {
   requestAnimationFrame(animate);
@@ -67,13 +59,6 @@ function animate() {
   }
   renderer.render(scene, camera);
 }
-
-//Add a listener to the window, so we can resize the window and the camera
-window.addEventListener("resize", function () {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
 
 //add mouse position listener, so we can make the eye move
 document.onmousemove = (e) => {
